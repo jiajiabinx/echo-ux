@@ -70,7 +70,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
   const [storyId, setStoryId] = useState<number | null>(null)
-  
+
   // State for the story generation process
   const [isLoading, setIsLoading] = useState(false)
   const [loadingText, setLoadingText] = useState("")
@@ -87,7 +87,7 @@ export default function Dashboard() {
         // Fetch user data using our API client
         console.log(`Fetching user data for user_id: ${userId}`)
         const userData = await userAPI.getUser(userId)
-        setUserData(userData)
+          setUserData(userData)
         setEditableUserData(userData)
 
         // Fetch stories using our API client
@@ -139,7 +139,7 @@ export default function Dashboard() {
     const stories: StoryData[] = []
     // Use fixed values that won't change between server and client
     const numStories = 3 // Fixed number to avoid hydration mismatch
-    
+
     for (let i = 0; i < numStories; i++) {
       stories.push({
         story_id: i + 1,
@@ -148,7 +148,7 @@ export default function Dashboard() {
         timestamp: `2025-04-07T${12+i}:00:00.000Z`, // Fixed timestamp
       })
     }
-    
+
     return stories
   }
 
@@ -308,9 +308,9 @@ export default function Dashboard() {
       refreshStories()
       
       // Success - we can navigate to the new story
-      if (storyId) {
-        router.push(`/visual?user_id=${userId}&story_id=${storyId}`)
-      }
+        if (storyId) {
+          router.push(`/visual?user_id=${userId}&story_id=${storyId}`)
+        }
       
     } catch (error: any) {
       console.error("Error generating story:", error)
@@ -644,9 +644,9 @@ export default function Dashboard() {
                   <p className="font-serif">{loadingText || "Processing..."}</p>
                 </div>
                 <div className="flex items-center justify-center py-2">
-                  <div className="h-2 w-full bg-[#ffffff]/10 rounded-full overflow-hidden">
+                <div className="h-2 w-full bg-[#ffffff]/10 rounded-full overflow-hidden">
                     <div className="h-full bg-[#ffffff]/70 rounded-full animate-pulse" style={{ width: '100%' }}></div>
-                  </div>
+                </div>
                 </div>
                 <p className="text-center text-sm text-[#ffffff]/70 mt-2">This may take a few minutes...</p>
               </div>
